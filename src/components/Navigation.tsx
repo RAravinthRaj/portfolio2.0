@@ -49,7 +49,7 @@ const Navigation = () => {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          JD
+          AR
         </motion.a>
 
         <div className="hidden md:flex items-center gap-8">
@@ -82,7 +82,10 @@ const Navigation = () => {
         <motion.a
           href="#contact"
           className="hidden md:block px-5 py-2.5 bg-primary text-primary-foreground font-medium text-sm rounded-lg glow-primary"
-          whileHover={{ scale: 1.05, boxShadow: "0 0 40px hsl(177 70% 50% / 0.6)" }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: "0 0 40px hsl(177 70% 50% / 0.6)",
+          }}
           whileTap={{ scale: 0.95 }}
         >
           Let's Talk

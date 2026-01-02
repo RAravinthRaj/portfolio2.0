@@ -2,18 +2,20 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Code2, Palette, Rocket, Sparkles } from "lucide-react";
 
+const CV_DRIVE_URL = "https://drive.google.com/drive/u/2/home";
+
 const stats = [
-  { value: "5+", label: "Years Experience" },
-  { value: "50+", label: "Projects Completed" },
-  { value: "30+", label: "Happy Clients" },
-  { value: "99%", label: "Client Satisfaction" },
+  { value: "5+", label: "Projects Built" },
+  { value: "Top 25%", label: "LeetCode Contest Ranking" },
+  { value: "1532", label: "Skillrack Global Rank" },
+  { value: "13th", label: "GFG Institute Rank" },
 ];
 
 const highlights = [
-  { icon: Code2, title: "Clean Code", desc: "Writing maintainable, scalable code" },
-  { icon: Palette, title: "UI/UX Design", desc: "Creating intuitive experiences" },
-  { icon: Rocket, title: "Performance", desc: "Optimizing for speed & efficiency" },
-  { icon: Sparkles, title: "Innovation", desc: "Pushing creative boundaries" },
+  { icon: Code2, title: "Clean Code", desc: "Maintainable & scalable systems" },
+  { icon: Palette, title: "UI/UX Design", desc: "Intuitive experiences" },
+  { icon: Rocket, title: "Performance", desc: "Fast & optimized apps" },
+  { icon: Sparkles, title: "Innovation", desc: "Creative problem solving" },
 ];
 
 const AboutSection = () => {
@@ -21,10 +23,14 @@ const AboutSection = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="about" className="relative py-32 overflow-hidden" ref={ref}>
+    <section
+      id="about"
+      className="py-20 relative md:py-32 overflow-hidden"
+      ref={ref}
+    >
       <div className="container mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left Side - Image/Visual */}
+          {/* LEFT — 3D MODEL */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -50 }}
@@ -32,24 +38,27 @@ const AboutSection = () => {
             transition={{ duration: 0.8 }}
           >
             <div className="relative aspect-square max-w-md mx-auto">
-              {/* Background decoration */}
+              {/* Glow */}
               <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/20 to-accent/20 blur-3xl" />
-              
-              {/* Main image container */}
+
+              {/* Glass Card */}
               <motion.div
                 className="relative w-full h-full rounded-3xl glass overflow-hidden"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="font-display text-8xl font-bold text-gradient opacity-30">
-                    JD
-                  </span>
-                </div>
+                <img
+                  src="/assets/profile.jpeg"
+                  alt="Aravinth Raj"
+                  className="w-full h-full object-cover
+                          rounded-3xl
+                          transition-transform duration-500
+                          group-hover:scale-105
+                        "
+                />
               </motion.div>
 
-              {/* Floating badge */}
+              {/* Floating Badge */}
               <motion.div
                 className="absolute -right-4 top-8 px-4 py-2 rounded-xl glass"
                 animate={{ y: [-5, 5, -5] }}
@@ -57,20 +66,10 @@ const AboutSection = () => {
               >
                 <span className="text-primary font-semibold">✨ Available</span>
               </motion.div>
-
-              {/* Experience badge */}
-              <motion.div
-                className="absolute -left-4 bottom-8 px-4 py-3 rounded-xl glass"
-                animate={{ y: [5, -5, 5] }}
-                transition={{ duration: 5, repeat: Infinity }}
-              >
-                <span className="text-2xl font-bold text-gradient">5+</span>
-                <span className="text-sm text-muted-foreground block">Years Exp.</span>
-              </motion.div>
             </div>
           </motion.div>
 
-          {/* Right Side - Content */}
+          {/* RIGHT — CONTENT */}
           <div>
             <motion.span
               className="inline-block text-primary font-medium tracking-wider uppercase text-sm mb-4"
@@ -87,8 +86,8 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
             >
-              Crafting Digital
-              <span className="text-gradient"> Experiences</span>
+              Turning Ideas Into{" "}
+              <span className="text-gradient">Working Solutions</span>
             </motion.h2>
 
             <motion.p
@@ -97,12 +96,13 @@ const AboutSection = () => {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              I'm a passionate full-stack developer and designer based in San Francisco. 
-              With over 5 years of experience, I specialize in creating beautiful, 
-              functional web applications that deliver exceptional user experiences.
+              Full-stack Engineer specializing in MERN, REST & GraphQL APIs,
+              with hands-on experience building secure authentication flows,
+              optimized databases, and scalable backend systems focused on clean
+              architecture and real-world impact.
             </motion.p>
 
-            {/* Highlights Grid */}
+            {/* Highlights */}
             <motion.div
               className="grid grid-cols-2 gap-4 mb-10"
               initial={{ opacity: 0, y: 20 }}
@@ -112,46 +112,47 @@ const AboutSection = () => {
               {highlights.map(({ icon: Icon, title, desc }, index) => (
                 <motion.div
                   key={title}
-                  className="p-4 rounded-xl glass group hover:border-primary/30 transition-all"
+                  className="p-4 rounded-xl glass hover:border-primary/30 transition-all"
                   whileHover={{ scale: 1.02, y: -2 }}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.4 + index * 0.1 }}
                 >
-                  <Icon className="w-6 h-6 text-primary mb-2 group-hover:scale-110 transition-transform" />
+                  <Icon className="w-6 h-6 text-primary mb-2" />
                   <h4 className="font-semibold text-sm mb-1">{title}</h4>
                   <p className="text-xs text-muted-foreground">{desc}</p>
                 </motion.div>
               ))}
             </motion.div>
 
-            <motion.a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg glow-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+            {/* CV Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
             >
-              Download CV
-            </motion.a>
+              <motion.a
+                href="/assets/Aravinth_Raj_CV.pdf"
+                download
+                className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg glow-primary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Download CV
+              </motion.a>
+            </motion.div>
           </div>
         </div>
 
-        {/* Stats */}
         <motion.div
-          className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 pt-16 border-t border-border"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8 mt-24 pt-16 border-t border-border sm:mt-20"
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
           {stats.map(({ value, label }, index) => (
-            <motion.div
-              key={label}
-              className="text-center"
-              whileHover={{ scale: 1.05 }}
-            >
+            <motion.div key={label} className="text-center">
               <motion.span
                 className="block font-display text-4xl md:text-5xl font-bold text-gradient mb-2"
                 initial={{ scale: 0.5 }}

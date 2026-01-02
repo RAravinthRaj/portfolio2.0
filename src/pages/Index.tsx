@@ -10,9 +10,9 @@ import CursorFollower from "@/components/CursorFollower";
 const Index = () => {
   return (
     <div className="relative min-h-screen bg-background noise-overlay">
-      <CursorFollower />
+      {/* <CursorFollower /> */}
       <Navigation />
-      
+
       <main>
         <HeroSection />
         <AboutSection />
@@ -20,7 +20,7 @@ const Index = () => {
         <SkillsSection />
         <ContactSection />
       </main>
-      
+
       <Footer />
     </div>
   );
