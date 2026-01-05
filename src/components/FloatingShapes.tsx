@@ -3,11 +3,11 @@ import { motion } from "framer-motion";
 const FloatingShapes = () => {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {/* Large gradient orb */}
       <motion.div
         className="absolute w-[600px] h-[600px] rounded-full opacity-30 blur-3xl"
         style={{
-          background: "radial-gradient(circle, hsl(177 70% 50% / 0.4) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, hsl(177 70% 50% / 0.4) 0%, transparent 70%)",
           top: "-200px",
           right: "-200px",
         }}
@@ -26,7 +26,8 @@ const FloatingShapes = () => {
       <motion.div
         className="absolute w-[400px] h-[400px] rounded-full opacity-20 blur-3xl"
         style={{
-          background: "radial-gradient(circle, hsl(280 70% 60% / 0.5) 0%, transparent 70%)",
+          background:
+            "radial-gradient(circle, hsl(280 70% 60% / 0.5) 0%, transparent 70%)",
           bottom: "10%",
           left: "-100px",
         }}
