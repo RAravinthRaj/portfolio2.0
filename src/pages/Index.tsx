@@ -17,8 +17,9 @@ const Index = () => {
         <div className="absolute w-[420px] h-[420px] bg-indigo-500/10 blur-3xl rounded-full bottom-0 right-[-20%]" />
       </div>
 
-      <Navigation />
       <FloatingShapes />
+
+      <Navigation />
 
       <main className="relative z-10">
         <HeroSection />
