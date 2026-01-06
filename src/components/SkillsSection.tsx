@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import {
   FaReact,
@@ -7,7 +7,6 @@ import {
   FaDocker,
   FaJava,
   FaPython,
-  FaAws,
   FaHtml5,
   FaCss3Alt,
   FaSass,
@@ -17,79 +16,193 @@ import {
   SiJavascript,
   SiTypescript,
   SiMongodb,
-  SiPostgresql,
   SiExpress,
   SiDjango,
   SiCplusplus,
   SiTailwindcss,
-  SiNextdotjs,
   SiC,
   SiFlask,
   SiMysql,
   SiJenkins,
   SiRender,
+  SiVercel,
 } from "react-icons/si";
 
+/* -------------------------------------------------------------------------- */
+/*                                   DATA                                     */
+/* -------------------------------------------------------------------------- */
+
 const allSkills = [
-  /* ---------------------------- FRONTEND ---------------------------- */
-  { name: "React", icon: FaReact, color: "#61DAFB", category: "Frontend" },
+  {
+    name: "React",
+    icon: FaReact,
+    color: "#61DAFB",
+    category: "Frontend",
+    level: 90,
+  },
   {
     name: "React Native",
     icon: FaReact,
     color: "#61DAFB",
     category: "Frontend",
+    level: 85,
   },
-  { name: "HTML", icon: FaHtml5, color: "#E34F26", category: "Frontend" },
-  { name: "CSS", icon: FaCss3Alt, color: "#1572B6", category: "Frontend" },
-  { name: "SCSS", icon: FaSass, color: "#CC6699", category: "Frontend" },
+  {
+    name: "HTML",
+    icon: FaHtml5,
+    color: "#E34F26",
+    category: "Frontend",
+    level: 95,
+  },
+  {
+    name: "CSS",
+    icon: FaCss3Alt,
+    color: "#1572B6",
+    category: "Frontend",
+    level: 90,
+  },
+  {
+    name: "SCSS",
+    icon: FaSass,
+    color: "#CC6699",
+    category: "Frontend",
+    level: 85,
+  },
   {
     name: "Tailwind CSS",
     icon: SiTailwindcss,
     color: "#38BDF8",
     category: "Frontend",
+    level: 90,
   },
-
-  /* ---------------------------- LANGUAGES ---------------------------- */
-  { name: "C", icon: SiC, color: "#A8B9CC", category: "Languages" },
-  { name: "C++", icon: SiCplusplus, color: "#00599C", category: "Languages" },
-  { name: "Java", icon: FaJava, color: "#ED8B00", category: "Languages" },
-  { name: "Python", icon: FaPython, color: "#3776AB", category: "Languages" },
   {
     name: "JavaScript",
     icon: SiJavascript,
     color: "#F7DF1E",
-    category: "Languages",
+    category: "Frontend",
+    level: 90,
   },
   {
     name: "TypeScript",
     icon: SiTypescript,
     color: "#3178C6",
-    category: "Languages",
+    category: "Frontend",
+    level: 85,
   },
 
-  /* ----------------------------- BACKEND ----------------------------- */
-  { name: "Node.js", icon: FaNodeJs, color: "#339933", category: "Backend" },
-  { name: "Express", icon: SiExpress, color: "#D1D5DB", category: "Backend" },
-  { name: "Django", icon: SiDjango, color: "#0F766E", category: "Backend" },
-  { name: "Flask", icon: SiFlask, color: "#FFFFFF", category: "Backend" },
+  { name: "C", icon: SiC, color: "#A8B9CC", category: "Languages", level: 75 },
+  {
+    name: "C++",
+    icon: SiCplusplus,
+    color: "#00599C",
+    category: "Languages",
+    level: 80,
+  },
+  {
+    name: "Java",
+    icon: FaJava,
+    color: "#ED8B00",
+    category: "Languages",
+    level: 85,
+  },
+  {
+    name: "Python",
+    icon: FaPython,
+    color: "#3776AB",
+    category: "Languages",
+    level: 90,
+  },
 
-  /* ----------------------------- DATABASE ---------------------------- */
-  { name: "MongoDB", icon: SiMongodb, color: "#47A248", category: "Database" },
-  { name: "MySQL", icon: SiMysql, color: "#4479A1", category: "Database" },
+  {
+    name: "Node.js",
+    icon: FaNodeJs,
+    color: "#339933",
+    category: "Backend",
+    level: 85,
+  },
+  {
+    name: "Express",
+    icon: SiExpress,
+    color: "#D1D5DB",
+    category: "Backend",
+    level: 80,
+  },
+  {
+    name: "Django",
+    icon: SiDjango,
+    color: "#0F766E",
+    category: "Backend",
+    level: 75,
+  },
+  {
+    name: "Flask",
+    icon: SiFlask,
+    color: "#FFFFFF",
+    category: "Backend",
+    level: 75,
+  },
 
-  /* ------------------------------ TOOLS ------------------------------ */
-  { name: "Git", icon: FaGitAlt, color: "#F05032", category: "Tools" },
-  { name: "GitHub", icon: FaGithub, color: "#E5E7EB", category: "Tools" },
+  {
+    name: "MongoDB",
+    icon: SiMongodb,
+    color: "#47A248",
+    category: "Database",
+    level: 85,
+  },
+  {
+    name: "MySQL",
+    icon: SiMysql,
+    color: "#4479A1",
+    category: "Database",
+    level: 80,
+  },
 
-  /* ------------------------------ DEVOPS ----------------------------- */
-  { name: "Docker", icon: FaDocker, color: "#2496ED", category: "DevOps" },
-  { name: "Jenkins", icon: SiJenkins, color: "#D24939", category: "DevOps" },
-  { name: "Render", icon: SiRender, color: "#46E3B7", category: "DevOps" },
-  { name: "AWS", icon: FaAws, color: "#FF9900", category: "DevOps" },
+  {
+    name: "Git",
+    icon: FaGitAlt,
+    color: "#F05032",
+    category: "Tools",
+    level: 90,
+  },
+  {
+    name: "GitHub",
+    icon: FaGithub,
+    color: "#E5E7EB",
+    category: "Tools",
+    level: 90,
+  },
+
+  {
+    name: "Docker",
+    icon: FaDocker,
+    color: "#2496ED",
+    category: "DevOps",
+    level: 75,
+  },
+  {
+    name: "Jenkins",
+    icon: SiJenkins,
+    color: "#D24939",
+    category: "DevOps",
+    level: 70,
+  },
+  {
+    name: "Render",
+    icon: SiRender,
+    color: "#46E3B7",
+    category: "DevOps",
+    level: 80,
+  },
+  {
+    name: "Vercel",
+    icon: SiVercel,
+    color: "#FFFFFF",
+    category: "DevOps",
+    level: 85,
+  },
 ];
 
 const categories = [
-  "All",
   "Frontend",
   "Backend",
   "Languages",
@@ -99,7 +212,7 @@ const categories = [
 ];
 
 /* -------------------------------------------------------------------------- */
-/*                              ANIMATIONS                                     */
+/*                                ANIMATIONS                                   */
 /* -------------------------------------------------------------------------- */
 
 const containerVariants = {
@@ -112,11 +225,7 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: {
-    opacity: 0,
-    scale: 0.92,
-    filter: "blur(6px)",
-  },
+  hidden: { opacity: 0, scale: 0.92, filter: "blur(6px)" },
   visible: {
     opacity: 1,
     scale: 1,
@@ -132,39 +241,31 @@ const cardVariants = {
 };
 
 /* -------------------------------------------------------------------------- */
-/*                              MAIN SECTION                                   */
+/*                               COMPONENT                                     */
 /* -------------------------------------------------------------------------- */
 
 export default function SkillsSection() {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState("Frontend");
   const ref = useRef<HTMLElement | null>(null);
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    const scrollToSkills = () => {
-      if (window.location.hash === "#skills" && ref.current) {
-        ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    };
-
-    scrollToSkills();
-    window.addEventListener("hashchange", scrollToSkills);
-
-    return () => window.removeEventListener("hashchange", scrollToSkills);
+    if (window.location.hash === "#skills" && ref.current) {
+      ref.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }, []);
 
-  const filteredSkills =
-    activeCategory === "All"
-      ? allSkills
-      : allSkills.filter((s) => s.category === activeCategory);
+  const filteredSkills = allSkills.filter(
+    (skill) => skill.category === activeCategory
+  );
 
   return (
     <section
       id="skills"
       ref={ref}
-      className="relative py-28  text-white overflow-hidden"
+      className="relative py-28 text-white overflow-hidden"
     >
-      {/* Subtle cyber background */}
+      {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:48px_48px] opacity-40" />
         <div className="absolute w-[420px] h-[420px] bg-cyan-500/10 blur-3xl rounded-full top-1/3 -left-48" />
@@ -172,57 +273,35 @@ export default function SkillsSection() {
       </div>
 
       <div className="container mx-auto px-6 relative z-10">
+        {/* Header */}
         <div className="text-center mb-16">
-          <motion.span
-            className="inline-block text-primary font-medium tracking-wider uppercase text-sm mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            Expertise
-          </motion.span>
-
           <motion.h2
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
           >
             Skills & <span className="text-gradient">Technologies</span>
           </motion.h2>
-
-          <motion.p
-            className="text-muted-foreground text-lg max-w-2xl mx-auto"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            A comprehensive toolkit of modern technologies and frameworks that I
-            use to bring ideas to life.
-          </motion.p>
         </div>
 
-        {/* Category Tabs */}
+        {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-14">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`
-                px-5 py-2 rounded-full text-sm font-medium transition-all
-                ${
-                  activeCategory === cat
-                    ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/40"
-                    : "bg-white/5 text-gray-400 border border-white/10 hover:text-white hover:border-cyan-400/30"
-                }
-              `}
+              className={`px-5 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === cat
+                  ? "bg-cyan-500/15 text-cyan-300 border border-cyan-400/40"
+                  : "bg-white/5 text-gray-400 border border-white/10 hover:text-white"
+              }`}
             >
               {cat}
             </button>
           ))}
         </div>
 
-        {/* Skill Grid */}
+        {/* Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -240,29 +319,31 @@ export default function SkillsSection() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                  whileHover={{
-                    y: -6,
-                    boxShadow: "0 12px 32px rgba(34,211,238,0.18)",
-                  }}
-                  whileTap={{ scale: 0.96 }}
-                  className="
-                    group p-6 rounded-2xl
-                    bg-white/5 border border-white/10
-                    hover:border-cyan-400/40
-                    transition-all
-                    flex flex-col items-center text-center
-                  "
+                  whileHover={{ y: -6 }}
+                  className="group p-6 rounded-2xl bg-white/5 border border-white/10 flex flex-col items-center text-center"
                 >
                   <Icon
-                    className="text-3xl mb-4 transition-transform group-hover:scale-110"
-                    style={{
-                      color: skill.color,
-                      filter: "drop-shadow(0 2px 10px rgba(0,0,0,0.45))",
-                    }}
+                    className="text-3xl mb-4"
+                    style={{ color: skill.color }}
                   />
-                  <h3 className="text-base font-semibold text-gray-200 group-hover:text-white">
-                    {skill.name}
-                  </h3>
+
+                  <h3 className="text-base font-semibold mb-3">{skill.name}</h3>
+
+                  {/* Progress */}
+                  <div className="w-full mt-5 mt-auto">
+                    <div className="h-2 w-full bg-white/10 rounded-full overflow-hidden">
+                      <motion.div
+                        className="h-full rounded-full"
+                        style={{ backgroundColor: skill.color }}
+                        initial={{ width: 0 }}
+                        animate={{ width: `${skill.level}%` }}
+                        transition={{ duration: 0.8 }}
+                      />
+                    </div>
+                    <span className="text-xs text-gray-400 mt-2 block">
+                      Proficiency · {skill.level}%
+                    </span>
+                  </div>
                 </motion.div>
               );
             })}

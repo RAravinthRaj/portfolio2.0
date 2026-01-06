@@ -1,10 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Mail, MapPin, Phone, Send, ArrowUpRight } from "lucide-react";
+import { Mail, MapPin, Send, ArrowUpRight } from "lucide-react";
 import { toast } from "sonner";
 import { FaLinkedin } from "react-icons/fa";
-
-const WHATSAPP_NUMBER = "8248947437";
 
 const contactInfo = [
   {
@@ -24,14 +22,6 @@ const contactInfo = [
     label: "Location",
     value: "National Engineering College, KR Nagar",
     href: "https://www.google.com/maps/place/National+Engineering+College/@9.1483125,77.8272423,16.98z/data=!4m6!3m5!1s0x3b06ae08c6794e85:0xea30f98dcb16c4f5!8m2!3d9.1483192!4d77.8321719!16zL20vMDNfeGJn?entry=ttu&g_ep=EgoyMDI1MTIwOS4wIKXMDSoASAFQAw%3D%3D",
-  },
-  {
-    icon: Phone,
-    label: "WhatsApp",
-    value: "Start a conversation",
-    href: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
-      "Hello, I’d like to connect and discuss opportunities."
-    )}`,
   },
 ];
 
