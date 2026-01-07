@@ -166,27 +166,28 @@ const HeroSection = () => {
             {/* Social Icons */}
             <m.div
               className="
-                grid grid-cols-4 gap-x-5 gap-y-8
-                w-fit mx-auto
-                sm:flex sm:gap-6 md:gap-8
-              "
+    grid grid-cols-4 gap-x-5 gap-y-8
+    w-fit mx-auto
+    sm:flex sm:gap-6 md:gap-8
+  "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1 }}
             >
-              {icons.map(({ icon: Icon, href, label }) => (
+              {/* First 4 icons */}
+              {icons.slice(0, 4).map(({ icon: Icon, href, label }) => (
                 <m.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
-                    relative group p-3 sm:p-3.5
-                    rounded-full glass
-                    text-muted-foreground
-                    hover:text-primary
-                    transition-colors
-                  "
+        relative group p-3 sm:p-3.5
+        rounded-full glass
+        text-muted-foreground
+        hover:text-primary
+        transition-colors
+      "
                   whileHover={hoverMotion}
                   whileTap={{ scale: 0.9 }}
                 >
@@ -195,25 +196,69 @@ const HeroSection = () => {
                   {!isMobile && (
                     <span
                       className="
-                        pointer-events-none
-                        absolute -top-9 left-1/2 -translate-x-1/2
-                        whitespace-nowrap
-                        rounded-md bg-background/90
-                        px-2 py-1 text-xs font-medium
-                        text-foreground
-                        opacity-0 scale-95
-                        transition-all duration-200
-                        group-hover:opacity-100
-                        group-hover:scale-100
-                        group-hover:-top-11
-                        shadow-lg backdrop-blur
-                      "
+            pointer-events-none
+            absolute -top-9 left-1/2 -translate-x-1/2
+            whitespace-nowrap
+            rounded-md bg-background/90
+            px-2 py-1 text-xs font-medium
+            text-foreground
+            opacity-0 scale-95
+            transition-all duration-200
+            group-hover:opacity-100
+            group-hover:scale-100
+            group-hover:-top-11
+            shadow-lg backdrop-blur
+          "
                     >
                       {label}
                     </span>
                   )}
                 </m.a>
               ))}
+
+              {/* Last 3 icons – centered */}
+              <div className="col-span-4 flex justify-center gap-5">
+                {icons.slice(4).map(({ icon: Icon, href, label }) => (
+                  <m.a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="
+          relative group p-3 sm:p-3.5
+          rounded-full glass
+          text-muted-foreground
+          hover:text-primary
+          transition-colors
+        "
+                    whileHover={hoverMotion}
+                    whileTap={{ scale: 0.9 }}
+                  >
+                    <Icon className="text-[18px] sm:text-[20px]" />
+
+                    {!isMobile && (
+                      <span
+                        className="
+              pointer-events-none
+              absolute -top-9 left-1/2 -translate-x-1/2
+              whitespace-nowrap
+              rounded-md bg-background/90
+              px-2 py-1 text-xs font-medium
+              text-foreground
+              opacity-0 scale-95
+              transition-all duration-200
+              group-hover:opacity-100
+              group-hover:scale-100
+              group-hover:-top-11
+              shadow-lg backdrop-blur
+            "
+                      >
+                        {label}
+                      </span>
+                    )}
+                  </m.a>
+                ))}
+              </div>
             </m.div>
           </div>
         </div>
