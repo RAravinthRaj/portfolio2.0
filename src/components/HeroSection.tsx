@@ -27,8 +27,6 @@ const HeroSection = () => {
     []
   );
 
-  const [currentRole, setCurrentRole] = useState(0);
-
   const icons = useMemo(
     () => [
       {
@@ -70,18 +68,20 @@ const HeroSection = () => {
     []
   );
 
+  const [currentRole, setCurrentRole] = useState(0);
   useEffect(() => {
-    if (isMobile || prefersReducedMotion) return;
+    if (prefersReducedMotion) return;
+
+    const delay = isMobile ? 3500 : 2000;
 
     const id = setTimeout(() => {
       setCurrentRole((p) => (p + 1) % roles.length);
-    }, 2000);
+    }, delay);
 
     return () => clearTimeout(id);
   }, [currentRole, isMobile, prefersReducedMotion, roles.length]);
 
   const hoverMotion = isMobile ? undefined : { scale: 1.08, y: -4 };
-
   const baseDuration = isMobile ? 0.45 : 0.6;
 
   return (
@@ -113,18 +113,30 @@ const HeroSection = () => {
             </h1>
 
             <div className="relative h-8 sm:h-10 md:h-12 mb-8 overflow-hidden">
-              <AnimatePresence initial={false}>
+              {isMobile ? (
                 <m.span
                   key={roles[currentRole]}
                   className="absolute inset-0 flex items-center justify-center font-semibold text-primary"
-                  initial={{ y: 24, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -24, opacity: 0 }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
                 >
                   {roles[currentRole]}
                 </m.span>
-              </AnimatePresence>
+              ) : (
+                <AnimatePresence initial={false}>
+                  <m.span
+                    key={roles[currentRole]}
+                    className="absolute inset-0 flex items-center justify-center font-semibold text-primary"
+                    initial={{ y: 24, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -24, opacity: 0 }}
+                    transition={{ duration: 0.45, ease: "easeOut" }}
+                  >
+                    {roles[currentRole]}
+                  </m.span>
+                </AnimatePresence>
+              )}
             </div>
 
             <m.p
@@ -163,60 +175,30 @@ const HeroSection = () => {
               </m.a>
             </m.div>
 
-            {/* Social Icons */}
             <m.div
               className="
-    grid grid-cols-4 gap-x-5 gap-y-8
-    w-fit mx-auto
-    sm:flex sm:gap-6 md:gap-8
-  "
+                grid grid-cols-4 gap-x-5 gap-y-8
+                w-fit mx-auto
+                sm:flex sm:gap-6 md:gap-8
+              "
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1 }}
             >
-              {/* First 4 icons */}
               {icons.slice(0, 4).map(({ icon: Icon, href, label }) => (
                 <m.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="
-        relative group p-3 sm:p-3.5
-        rounded-full glass
-        text-muted-foreground
-        hover:text-primary
-        transition-colors
-      "
+                  className="relative group p-3 sm:p-3.5 rounded-full glass text-muted-foreground hover:text-primary transition-colors"
                   whileHover={hoverMotion}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Icon className="text-[18px] sm:text-[20px]" />
-
-                  {!isMobile && (
-                    <span
-                      className="
-            pointer-events-none
-            absolute -top-9 left-1/2 -translate-x-1/2
-            whitespace-nowrap
-            rounded-md bg-background/90
-            px-2 py-1 text-xs font-medium
-            text-foreground
-            opacity-0 scale-95
-            transition-all duration-200
-            group-hover:opacity-100
-            group-hover:scale-100
-            group-hover:-top-11
-            shadow-lg backdrop-blur
-          "
-                    >
-                      {label}
-                    </span>
-                  )}
                 </m.a>
               ))}
 
-              {/* Last 3 icons – centered */}
               <div className="col-span-4 flex justify-center gap-5">
                 {icons.slice(4).map(({ icon: Icon, href, label }) => (
                   <m.a
@@ -224,38 +206,11 @@ const HeroSection = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="
-          relative group p-3 sm:p-3.5
-          rounded-full glass
-          text-muted-foreground
-          hover:text-primary
-          transition-colors
-        "
+                    className="relative group p-3 sm:p-3.5 rounded-full glass text-muted-foreground hover:text-primary transition-colors"
                     whileHover={hoverMotion}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Icon className="text-[18px] sm:text-[20px]" />
-
-                    {!isMobile && (
-                      <span
-                        className="
-              pointer-events-none
-              absolute -top-9 left-1/2 -translate-x-1/2
-              whitespace-nowrap
-              rounded-md bg-background/90
-              px-2 py-1 text-xs font-medium
-              text-foreground
-              opacity-0 scale-95
-              transition-all duration-200
-              group-hover:opacity-100
-              group-hover:scale-100
-              group-hover:-top-11
-              shadow-lg backdrop-blur
-            "
-                      >
-                        {label}
-                      </span>
-                    )}
                   </m.a>
                 ))}
               </div>
