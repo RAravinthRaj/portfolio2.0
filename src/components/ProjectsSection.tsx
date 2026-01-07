@@ -5,7 +5,7 @@ import {
   AnimatePresence,
   useInView,
 } from "framer-motion";
-import { useRef, useState } from "react";
+import { memo, useRef, useState } from "react";
 import { ExternalLink } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import inventoryImg from "../assets/images/inventory_management_system.png";
@@ -278,7 +278,7 @@ const ProjectCard = ({ project, index, activeIndex, setActiveIndex }: any) => {
   );
 };
 
-export default function ProjectsSection() {
+const ProjectsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -401,4 +401,6 @@ export default function ProjectsSection() {
       </section>
     </LazyMotion>
   );
-}
+};
+
+export default memo(ProjectsSection);
