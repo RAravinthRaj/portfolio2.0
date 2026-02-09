@@ -59,9 +59,9 @@ const AboutSection = () => {
                   style={{ translateZ: 0 }}
                 >
                   <img
-                    src="/assets/profile.jpeg"
+                    src="/assets/profile.png"
                     alt="Aravinth Raj"
-                    className="w-full h-full object-cover rounded-3xl"
+                    className="w-full h-full object-cover object-top rounded-3xl scale-130"
                   />
                 </m.div>
 

@@ -6,8 +6,9 @@ import {
   useReducedMotion,
 } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
-import { FaGithub, FaLinkedin, FaTwitter, FaLaptopCode } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaLaptopCode } from "react-icons/fa";
 import { SiLeetcode, SiGeeksforgeeks, SiCodechef } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
 import { FiArrowDown } from "react-icons/fi";
 import FloatingShapes from "./FloatingShapes";
 
@@ -24,7 +25,7 @@ const HeroSection = () => {
       "UI/UX Designer",
       "MERN Stack Engineer",
     ],
-    []
+    [],
   );
 
   const icons = useMemo(
@@ -40,8 +41,8 @@ const HeroSection = () => {
         href: "https://www.linkedin.com/in/aravinth-raj-r-868963288/",
       },
       {
-        icon: FaTwitter,
-        label: "Twitter / X",
+        icon: FaXTwitter,
+        label: "X (Twitter)",
         href: "https://x.com/aravinth_raj_r",
       },
       {
@@ -65,7 +66,7 @@ const HeroSection = () => {
         href: "https://www.codechef.com/",
       },
     ],
-    []
+    [],
   );
 
   const [currentRole, setCurrentRole] = useState(0);
@@ -190,12 +191,26 @@ const HeroSection = () => {
                   key={label}
                   href={href}
                   target="_blank"
+                  title={label}
                   rel="noopener noreferrer"
                   className="relative group p-3 sm:p-3.5 rounded-full glass text-muted-foreground hover:text-primary transition-colors"
                   whileHover={hoverMotion}
                   whileTap={{ scale: 0.9 }}
                 >
                   <Icon className="text-[18px] sm:text-[20px]" />
+
+                  {!isMobile && (
+                    <span
+                      className="
+          pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2
+          whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white
+          opacity-0 scale-95 transition-all duration-200
+          group-hover:opacity-100 group-hover:scale-100
+        "
+                    >
+                      {label}
+                    </span>
+                  )}
                 </m.a>
               ))}
 
@@ -205,12 +220,26 @@ const HeroSection = () => {
                     key={label}
                     href={href}
                     target="_blank"
+                    title={label}
                     rel="noopener noreferrer"
                     className="relative group p-3 sm:p-3.5 rounded-full glass text-muted-foreground hover:text-primary transition-colors"
                     whileHover={hoverMotion}
                     whileTap={{ scale: 0.9 }}
                   >
                     <Icon className="text-[18px] sm:text-[20px]" />
+
+                    {!isMobile && (
+                      <span
+                        className="
+          pointer-events-none absolute -top-10 left-1/2 -translate-x-1/2
+          whitespace-nowrap rounded-md bg-black/80 px-2 py-1 text-xs text-white
+          opacity-0 scale-95 transition-all duration-200
+          group-hover:opacity-100 group-hover:scale-100
+        "
+                      >
+                        {label}
+                      </span>
+                    )}
                   </m.a>
                 ))}
               </div>
