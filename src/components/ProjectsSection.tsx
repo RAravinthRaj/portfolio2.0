@@ -33,7 +33,7 @@ const projects = [
       frontend: "https://github.com/RAravinthRaj/nec-store-react",
       backend: "https://github.com/RAravinthRaj/nec-store-node",
     },
-    demo: "https://nec-store-react.onrender.com",
+    demo: "https://nec.edu.in/necstoreapp/",
   },
   {
     title: "Staff Management System",
@@ -321,7 +321,7 @@ const ProjectsSection = () => {
                   activeIndex={activeIndex}
                   setActiveIndex={setActiveIndex}
                 />
-              )
+              ),
             )}
           </div>
 
