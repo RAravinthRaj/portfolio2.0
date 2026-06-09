@@ -32,6 +32,7 @@ import {
   SiJenkins,
   SiRender,
   SiVercel,
+  SiStyledcomponents,
 } from "react-icons/si";
 
 const allSkills = [
@@ -65,7 +66,7 @@ const allSkills = [
   },
   {
     name: "SCSS",
-    icon: FaSass,
+    icon: SiStyledcomponents,
     color: "#CC6699",
     category: "Frontend",
     level: 85,
@@ -82,7 +83,7 @@ const allSkills = [
     icon: SiJavascript,
     color: "#F7DF1E",
     category: "Frontend",
-    level: 90,
+    level: 85,
   },
   {
     name: "TypeScript",
@@ -112,7 +113,7 @@ const allSkills = [
     icon: FaPython,
     color: "#3776AB",
     category: "Languages",
-    level: 90,
+    level: 70,
   },
 
   {
@@ -120,7 +121,7 @@ const allSkills = [
     icon: FaNodeJs,
     color: "#339933",
     category: "Backend",
-    level: 85,
+    level: 80,
   },
   {
     name: "Express",
@@ -134,14 +135,14 @@ const allSkills = [
     icon: SiDjango,
     color: "#0F766E",
     category: "Backend",
-    level: 75,
+    level: 70,
   },
   {
     name: "Flask",
     icon: SiFlask,
     color: "#FFFFFF",
     category: "Backend",
-    level: 75,
+    level: 70,
   },
 
   {
@@ -149,7 +150,7 @@ const allSkills = [
     icon: SiMongodb,
     color: "#47A248",
     category: "Database",
-    level: 85,
+    level: 80,
   },
   {
     name: "MySQL",
@@ -193,14 +194,14 @@ const allSkills = [
     icon: SiRender,
     color: "#46E3B7",
     category: "DevOps",
-    level: 80,
+    level: 75,
   },
   {
     name: "Vercel",
     icon: SiVercel,
     color: "#FFFFFF",
     category: "DevOps",
-    level: 85,
+    level: 70,
   },
 ];
 
@@ -251,7 +252,7 @@ export default function SkillsSection() {
 
   const filteredSkills = useMemo(
     () => allSkills.filter((s) => s.category === activeCategory),
-    [activeCategory]
+    [activeCategory],
   );
 
   return (

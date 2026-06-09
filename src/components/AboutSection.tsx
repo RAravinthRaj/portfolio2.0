@@ -4,9 +4,9 @@ import { Code2, Palette, Rocket, Sparkles } from "lucide-react";
 
 const stats = [
   { value: "5+", label: "Projects Built" },
-  { value: "Top 25%", label: "LeetCode Contest Ranking" },
-  { value: "1532", label: "Skillrack Global Rank" },
-  { value: "13th", label: "GFG Institute Rank" },
+  { value: "Top 16%", label: "LeetCode Contest Ranking" },
+  { value: "954", label: "Skillrack Global Rank" },
+  { value: "10th", label: "GFG Institute Rank" },
 ];
 
 const highlights = [
