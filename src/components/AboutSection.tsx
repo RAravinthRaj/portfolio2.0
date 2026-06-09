@@ -149,7 +149,7 @@ const AboutSection = () => {
                 style={{ translateZ: 0 }}
               >
                 <m.a
-                  href="https://bit.ly/4lcPwM3"
+                  href="https://drive.google.com/file/d/1qV6zpVkhPuiB1-7EIZhKVw0LRtEi381q/view?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="px-6 py-3 bg-primary text-primary-foreground font-semibold rounded-lg glow-primary"
