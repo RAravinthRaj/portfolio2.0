@@ -7,7 +7,7 @@ import {
 } from "framer-motion";
 import { useEffect, useState, useMemo } from "react";
 import { FaGithub, FaLinkedin, FaLaptopCode } from "react-icons/fa";
-import { SiLeetcode, SiGeeksforgeeks, SiCodechef } from "react-icons/si";
+import { SiLeetcode, SiGeeksforgeeks, SiCodeforces } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
 import { FiArrowDown } from "react-icons/fi";
 import FloatingShapes from "./FloatingShapes";
