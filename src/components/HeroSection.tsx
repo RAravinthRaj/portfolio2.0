@@ -33,7 +33,7 @@ const HeroSection = () => {
       {
         icon: FaGithub,
         label: "GitHub",
-        href: "https://github.com/AravinthRajR",
+        href: "https://github.com/RAravinthRaj",
       },
       {
         icon: FaLinkedin,
@@ -58,12 +58,12 @@ const HeroSection = () => {
       {
         icon: FaLaptopCode,
         label: "Skillrack",
-        href: "https://www.skillrack.com/faces/resume.xhtml?id=440619",
+        href: "https://www.skillrack.com/faces/resume.xhtml?id=440619&key=454ab63e4f875b92e95ecbb5561046c0dc5f6aa7",
       },
       {
-        icon: SiCodechef,
-        label: "CodeChef",
-        href: "https://www.codechef.com/",
+        icon: SiCodeforces,
+        label: "CodeForces",
+        href: "https://codeforces.com/profile/aravinthrajr",
       },
     ],
     [],
